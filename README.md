@@ -22,35 +22,68 @@ plugins/
       luan-giai.md                  # /luan-giai — Luận giải quẻ
     skills/
       gieo-que/
-        SKILL.md                    # Tự động khi user muốn gieo quẻ
-        references/bang-tra-cuu.md  # Bảng tra cứu Nạp Giáp, Nạp Chi, 64 quẻ...
+        SKILL.md                         # Tự động khi user muốn gieo quẻ
+        references/bang-tra-cuu.md       # Bảng tra cứu Nạp Giáp, Nạp Chi, 64 quẻ, Lục Thần, Nạp Âm
       luan-giai/
-        SKILL.md                    # Tự động khi user muốn giải quẻ
-        references/quy-tac-luan-giai.md  # Quy tắc luận giải Dụng Thần, Vượng Suy...
+        SKILL.md                         # Tự động khi user muốn giải quẻ
+        references/quy-tac-luan-giai.md  # Quy tắc luận giải Dụng Thần, Vượng Suy, hào động
 ```
 
 ## Commands vs Skills
 
-| | Commands (`/gieo-que`, `/luan-giai`) | Skills (auto-invoked) |
+| | Commands | Skills (auto-invoked) |
 |---|---|---|
 | **Kích hoạt** | User gõ `/gieo-que` hoặc `/luan-giai` | Claude tự nhận diện từ ngữ cảnh |
 | **Khi nào** | User biết lệnh, muốn chạy trực tiếp | User nói tự nhiên ("gieo quẻ cho tôi") |
 | **Logic** | Chứa toàn bộ hướng dẫn chi tiết | Nhẹ, trỏ về commands/ để thực hiện |
 
-Skills hoạt động như "bộ nhận diện" — khi user nói tự nhiên, skill kích hoạt và thực hiện theo hướng dẫn chi tiết trong commands.
+Skills hoạt động như "bộ nhận diện" — khi user nói tự nhiên, skill kích hoạt và thực hiện theo hướng dẫn trong commands.
 
 ## Thành phần
 
-### `/gieo-que` (Command) + `gieo-que` (Skill)
-- **Chức năng**: Thu thập thông tin, lập Tứ Trụ theo Mai Hoa Dịch Số, gieo quẻ Lục Hào
-- **Output**: Bảng quẻ Lục Hào hoàn chỉnh (Nạp Giáp, Lục Thân, Thế/Ứng, Lục Thần)
-- **Command**: `/gieo-que Nguyễn Văn A, 15/03/1990, nam, hỏi tài lộc`
-- **Skill**: "Tôi muốn gieo quẻ xem tài lộc, tên Nguyễn Văn A, sinh 15/03/1990"
+### `/gieo-que` + skill `gieo-que`
 
-### `/luan-giai` (Command) + `luan-giai` (Skill)
-- **Chức năng**: Xác định Dụng Thần, phân tích Vượng/Suy, hào động → kết luận + lời khuyên
-- **Command**: `/luan-giai` hoặc `/luan-giai Thiên Phong Cấu, hào 1 động, mệnh Hỏa`
-- **Skill**: "Quẻ này có ý nghĩa gì?" hoặc "Giải quẻ giúp tôi"
+Kích hoạt khi: `gieo quẻ`, `bói quẻ`, `xem quẻ`, `xin quẻ`, `lục hào`, `khởi quẻ`, `lập quẻ`, `bói dịch`, hoặc user cung cấp tên + ngày sinh kèm câu hỏi vận mệnh.
+
+**Quy trình:**
+1. Thu thập: họ tên, ngày sinh, giờ sinh, giới tính, câu hỏi
+2. Lập Tứ Trụ (Bát Tự) theo Can Chi + Nạp Âm
+3. Tính Thượng Quái, Hạ Quái, hào động theo Mai Hoa Dịch Số
+4. Lập bảng Lục Hào (Nạp Chi, Lục Thân, Lục Thần, Thế/Ứng, hào động)
+5. Hỏi người dùng có muốn luận giải không
+
+**Ví dụ:**
+```
+/gieo-que Nguyễn Văn A, 15/03/1990, nam, hỏi tài lộc
+"Tôi muốn gieo quẻ xem tài lộc, tên Nguyễn Văn A, sinh 15/03/1990"
+```
+
+### `/luan-giai` + skill `luan-giai`
+
+Kích hoạt khi: `luận giải`, `giải quẻ`, `phân tích quẻ`, `ý nghĩa quẻ`, `đoán quẻ`, `quẻ này tốt không`, hoặc ngay sau khi gieo quẻ xong.
+
+**Quy trình:**
+1. Xác định Dụng Thần theo lĩnh vực hỏi
+2. Phân tích Vượng/Suy (Nguyệt kiến, Nhật thần)
+3. Phân tích Hào Động (hồi đầu sinh/khắc, hợp/xung)
+4. Phân tích Thế Ứng + Lục Thần bổ trợ
+5. Tổng hợp kết luận + thời vận + lời khuyên
+
+**Output format:**
+```
+🔮 TỔNG QUAN   — quẻ tượng + ý nghĩa chính
+📊 DỤNG THẦN   — dụng thần nào, vượng/suy
+⚡ HÀO ĐỘNG    — hào động hóa gì, tác dụng
+🔮 KẾT LUẬN    — tốt/xấu/bình hòa
+📅 THỜI VẬN    — khi nào ứng nghiệm
+💡 LỜI KHUYÊN  — hành động cụ thể
+```
+
+**Ví dụ:**
+```
+/luan-giai Thiên Phong Cấu, hào 1 động, mệnh Hỏa, hỏi tài lộc
+"Quẻ này có ý nghĩa gì?" / "Giải quẻ giúp tôi"
+```
 
 ## Luồng sử dụng
 
@@ -62,7 +95,7 @@ Cách 2: Nói tự nhiên (skills tự kích hoạt)
   "Gieo quẻ cho tôi..."  →  "Giải quẻ giúp tôi"
 
 Cách 3: Luận giải quẻ có sẵn
-  /luan-giai + thông tin quẻ thủ công
+  /luan-giai Thiên Phong Cấu, hào 1 động, mệnh Hỏa, hỏi tài lộc
 ```
 
 ## Cài đặt
