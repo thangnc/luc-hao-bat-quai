@@ -1,6 +1,6 @@
 ---
 name: luan-giai
-description: Luận giải quẻ Lục Hào (六爻) - Phân tích và giải nghĩa chi tiết quẻ Kinh Dịch. Tự động kích hoạt khi có quẻ Lục Hào trong ngữ cảnh hội thoại cần luận giải, hoặc khi người dùng hỏi ý nghĩa quẻ, muốn giải quẻ, phân tích quẻ mà chưa dùng lệnh /luan-giai. Trigger khi gặp: luận giải, giải quẻ, phân tích quẻ, ý nghĩa quẻ, đoán quẻ, quẻ này tốt không, quẻ nói gì, hoặc ngay sau khi gieo quẻ xong và người dùng muốn hiểu kết quả.
+description: Luận giải quẻ Lục Hào (六爻) - Phân tích và giải nghĩa chi tiết quẻ Kinh Dịch. Tự động kích hoạt khi có quẻ Lục Hào trong ngữ cảnh hội thoại cần luận giải, hoặc khi người dùng hỏi ý nghĩa quẻ, muốn giải quẻ, phân tích quẻ mà chưa dùng lệnh /luan-giai. Trigger khi gặp từ khoá luận giải, giải quẻ, phân tích quẻ, ý nghĩa quẻ, đoán quẻ, quẻ này tốt không, quẻ nói gì, hoặc ngay sau khi gieo quẻ xong và người dùng muốn hiểu kết quả.
 ---
 
 # Luận Giải Quẻ Lục Hào (Auto-invoked)

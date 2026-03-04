@@ -1,6 +1,6 @@
 ---
 name: gieo-que
-description: Gieo quẻ Lục Hào (六爻) - Kinh Dịch, Ngũ Hành, Bát Quái. Tự động kích hoạt khi người dùng muốn gieo quẻ, bói quẻ, xem quẻ, xin quẻ, hoặc hỏi về vận mệnh/tình duyên/tài lộc/sự nghiệp/sức khỏe mà cần gieo quẻ. Trigger khi gặp: gieo quẻ, bói quẻ, xem quẻ, lục hào, xin quẻ, khởi quẻ, lập quẻ, bói dịch, hoặc khi người dùng cung cấp thông tin cá nhân (tên, ngày sinh) kèm câu hỏi vận mệnh mà chưa dùng lệnh /gieo-que.
+description: Gieo quẻ Lục Hào (六爻) - Kinh Dịch, Ngũ Hành, Bát Quái. Tự động kích hoạt khi người dùng muốn gieo quẻ, bói quẻ, xem quẻ, xin quẻ, hoặc hỏi về vận mệnh, tình duyên, tài lộc, sự nghiệp, sức khỏe mà cần gieo quẻ. Trigger khi gặp từ khoá gieo quẻ, bói quẻ, xem quẻ, lục hào, xin quẻ, khởi quẻ, lập quẻ, bói dịch, hoặc khi người dùng cung cấp thông tin cá nhân (tên, ngày sinh) kèm câu hỏi vận mệnh mà chưa dùng lệnh /gieo-que.
 ---
 
 # Gieo Quẻ Lục Hào (Auto-invoked)
